@@ -1,0 +1,23 @@
+name: 'Generate changelog'
+description: 'Generate changelog based on list of commits'
+inputs:
+  to:
+    description: 'Last commit (inclusive) to generate changelog from'
+    default: 'HEAD'
+  from:
+    description: 'Commit to start generating changelog from (exclusive)'
+    required: true
+  git_commit_url_prefix:
+    required: true
+    description: 'URL prefix that can be used to a commit from this project in the web browser. 
+    For example "https://github.com/inovait/actions-common/commit/" for actions-common repository.'
+  target_file:
+    description: 'If present, config will be written to this markdown file'
+  jira_url:
+    description: 'URL to the jira instance. If present, all JIRA ticket mentions will be linked'
+outputs:
+  changelog:
+    description: 'Changelog in the markdown format'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
